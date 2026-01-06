@@ -1,0 +1,136 @@
+:root{
+  --bg: #ffffff;
+  --primary: #cfeeff; /* light blue */
+  --primary-600: #8fd0ff;
+  --muted: #6b7280;
+  --text: #0b2336;
+  --card: #f7fbff;
+  --radius: 10px;
+  --max-width: 1100px;
+}
+*{box-sizing:border-box}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:1.25rem}
+.site-header{border-bottom:1px solid rgba(15,23,42,0.04);backdrop-filter:saturate(120%) blur(6px);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.logo{font-weight:600;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:0.75rem}
+.logo-img{max-height:60px;width:auto;display:block}
+.logo-text{font-size:0.95rem;line-height:1.2;color:var(--text)}
+.logo-text small{display:block;font-size:0.75rem;color:var(--muted);font-weight:400}
+.nav{display:block}
+.nav ul{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
+.nav a{color:var(--text);text-decoration:none;padding:0.35rem 0.5rem;border-radius:6px}
+.nav a:hover{background:var(--card)}
+.nav-toggle{display:none;background:none;border:1px solid transparent;padding:0.4rem 0.6rem;border-radius:8px}
+
+.hero{background:linear-gradient(180deg,var(--primary),#eef9ff);padding:3.25rem 0}
+.hero-inner{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.hero h1{font-size:clamp(1.5rem,3.5vw,2.25rem);margin:0}
+.hero p{color:var(--muted);max-width:60ch}
+.hero-ctas{display:flex;gap:0.75rem;margin-top:0.5rem}
+.btn{display:inline-block;padding:0.6rem 1rem;border-radius:8px;text-decoration:none;border:1px solid transparent;font-weight:600}
+.btn.primary{background:var(--text);color:#fff}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--text)}
+
+.section{padding:2.5rem 0}
+.about-inner .lead{font-size:1.05rem;line-height:1.6;color:var(--text);margin-bottom:0.75rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.about-grid img{max-width:100%;height:auto;border-radius:var(--radius)}
+.about .values{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem}
+.about .values li{background:linear-gradient(90deg, rgba(143,208,255,0.12), rgba(207,238,255,0.06));padding:0.6rem;border-radius:8px;font-size:0.95rem}
+.services-intro{font-size:1rem;color:var(--muted);max-width:70ch;margin:0 0 2rem 0;line-height:1.6}
+.mission-vision{background:linear-gradient(135deg, rgba(207,238,255,0.08), rgba(143,208,255,0.04))}
+.mission-vision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+.mv-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 2px 8px rgba(2,6,23,0.06);border-left:4px solid var(--primary-600)}
+.mv-card h3{margin:0 0 1rem 0;color:var(--text)}
+.mv-card p{margin:0;color:var(--muted);line-height:1.6}
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);animation:fadeIn 0.3s ease}
+.modal.active{display:flex;align-items:center;justify-content:center}
+.modal-content{background-color:var(--bg);padding:2.5rem;border-radius:var(--radius);box-shadow:0 10px 40px rgba(0,0,0,0.2);max-width:600px;width:90%;position:relative;animation:slideIn 0.3s ease}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);padding:0.5rem}
+.modal-close:hover{color:var(--text)}
+.modal h2{margin:0 0 1.5rem 0}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideIn{from{transform:translateY(-50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.services-hidden{display:none}
+.services-hidden.visible{display:block;animation:fadeIn 0.3s ease}
+@media (max-width:768px){
+  .services-grid{grid-template-columns:1fr}
+}
+.section h2{margin:0 0 1rem 0}
+.grid{display:grid;gap:1rem}
+.services-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:0 2px 6px rgba(2,6,23,0.03)}
+
+.team-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));align-items:start}
+.person{background:transparent;padding:0.75rem;border-radius:8px;text-align:center}
+.avatar{width:72px;height:72px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--primary-600));color:var(--text);font-weight:700;margin-bottom:0.5rem}
+
+/* Team carousel (minimalist) */
+.team-carousel{position:relative;margin-top:1rem;overflow:hidden}
+.team-track{display:flex;gap:1rem;transition:transform 0.45s ease}
+.team-track .person{min-width:calc(25% - 0.75rem);flex-shrink:0}
+.team-carousel .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:transparent;color:var(--text);border:1px solid rgba(11,35,54,0.06);padding:0.5rem 0.75rem;border-radius:8px;z-index:20;font-size:1rem;box-shadow:0 2px 6px rgba(2,6,23,0.04)}
+.team-carousel .carousel-btn:hover{background:var(--card)}
+.team-carousel .carousel-btn.prev{left:0.5rem}
+.team-carousel .carousel-btn.next{right:0.5rem}
+.team-carousel.expanded .team-track{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;transform:none !important}
+.team-carousel.expanded .carousel-btn{display:none}
+.person{cursor:pointer}
+.person:hover{opacity:0.8;transition:opacity 0.2s}
+.lawyer-detail{text-align:center}
+.lawyer-avatar-large{width:100px;height:100px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--primary-600));color:var(--text);font-weight:700;margin:0 auto 1rem;font-size:1.5rem}
+.lawyer-role{color:var(--muted);font-size:0.95rem;margin:0 0 1.5rem 0}
+.lawyer-credentials{text-align:left;max-width:500px;margin:0 auto;padding:1rem;background:var(--card);border-radius:var(--radius);max-height:400px;overflow-y:auto}
+.lawyer-credentials p{color:var(--muted);line-height:1.6;margin:0}
+.lawyer-credentials div{color:var(--muted);line-height:1.6;font-size:0.95rem}
+@media (max-width:1024px){
+  .team-carousel.expanded .team-track{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:768px){
+  .team-carousel.expanded .team-track{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .team-carousel.expanded .team-track{grid-template-columns:1fr}
+}
+@media (max-width:1024px){
+  .team-track .person{min-width:calc(50% - 0.5rem)}
+}
+@media (max-width:640px){
+  .team-track .person{min-width:100%}
+  .team-carousel .carousel-btn{display:none}
+}
+
+.contact-form{max-width:720px;margin:1.5rem auto 0;background:var(--bg);padding:1.75rem;border-radius:12px;box-shadow:0 8px 30px rgba(11,35,54,0.06);border:1px solid rgba(11,35,54,0.04)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.5rem}
+.form-row{display:flex;flex-direction:column;margin-bottom:0.75rem}
+.form-row label{font-size:0.85rem;color:var(--muted);margin-bottom:0.4rem}
+.form-row input,.form-row textarea{padding:0.9rem 0.9rem;border:1px solid rgba(11,35,54,0.06);border-radius:10px;font-size:1rem;width:100%;background:transparent;color:var(--text);transition:box-shadow .18s ease,border-color .18s ease}
+.form-row input:focus,.form-row textarea:focus{outline:none;border-color:var(--primary-600);box-shadow:0 10px 30px rgba(143,208,255,0.14)}
+.form-row textarea{min-height:140px;resize:vertical}
+.form-actions{display:flex;gap:0.75rem;margin-top:0.5rem}
+.contact-form .btn.primary{padding:0.75rem 1.25rem;border-radius:10px}
+.contact-form .btn.ghost{padding:0.7rem 1rem;border-radius:10px;border:1px solid rgba(11,35,54,0.06);background:transparent}
+.form-msg{color:var(--muted);margin-top:0.75rem;font-size:0.95rem}
+
+.site-footer{border-top:1px solid rgba(15,23,42,0.04);padding:1rem 0;margin-top:2rem}
+
+@media (max-width:800px){
+  .nav{display:none}
+  .nav-toggle{display:inline-block}
+  .header-inner{gap:0.5rem}
+}
+
+@media (max-width:640px){
+  .form-grid{grid-template-columns:1fr}
+}
+
+/* simple utility */
+.muted{color:var(--muted)}
