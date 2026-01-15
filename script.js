@@ -314,10 +314,14 @@ document.addEventListener('DOMContentLoaded',function(){
     allLawyers.forEach(lawyer => {
       lawyer.addEventListener('click', ()=>{
         const name = lawyer.querySelector('h4')?.textContent || 'Lawyer';
-        const initials = lawyer.querySelector('.avatar')?.textContent || 'LV';
+        // const initials = lawyer.querySelector('.avatar')?.textContent || 'LV';
         const info = lawyerData[name] || { role: 'Attorney', credentials: 'Legal professional at Jimeno Cope & David Law Offices.' };
-        
-        document.getElementById('lawyer-avatar').textContent = initials;
+        const imgEl = lawyer.querySelector('img');
+        const avatar = document.getElementById('lawyer-avatar');
+
+        avatar.src = imgEl ? imgEl.src : '';
+        avatar.alt = name;
+        // document.getElementById('lawyer-avatar').textContent = initials;
         document.getElementById('lawyer-name').textContent = name;
         document.getElementById('lawyer-role').textContent = info.role;
         document.getElementById('lawyer-credentials').innerHTML = `<div>${info.credentials}</div>`;
